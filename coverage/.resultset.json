@@ -240,6 +240,11 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
@@ -249,38 +254,11 @@
           null
         ]
       },
-      "/Users/rodrigochavez/turing_work/2mod/projects/mlb/spec/features/teams/show_spec.rb": {
+      "/Users/rodrigochavez/turing_work/2mod/projects/mlb/app/models/team.rb": {
         "lines": [
           1,
-          null,
-          1,
-          1,
-          1,
-          1,
           1,
           null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/rodrigochavez/turing_work/2mod/projects/mlb/app/models/concerns/team.rb": {
-        "lines": [
-          1,
           null,
           null
         ]
@@ -296,11 +274,12 @@
         "lines": [
           1,
           1,
-          1,
+          null,
+          2,
           null,
           null,
           1,
-          1,
+          0,
           null,
           null
         ]
@@ -312,6 +291,6 @@
         ]
       }
     },
-    "timestamp": 1710895918
+    "timestamp": 1711144914
   }
 }

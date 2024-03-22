@@ -1,0 +1,8 @@
+<h1> Players On The <%=@team.name  %></h1>
+
+  <% @team.players.each do |player|  %>
+    <p> Player Name: <%= player.name %></p>
+    <p> Jersey Number: <%= player.jersey_number %></p>
+    <p> Has won a Golden Glove: <%= player.golden_glove %></p>
+
+ <% end %>

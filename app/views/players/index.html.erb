@@ -1,0 +1,6 @@
+<h1>Players</h1>
+ <% @players.each do |player|  %>
+    <p>Name: <%= player.name %></p>
+    <p>Jersey Number: <%= player.jersey_number %></p>
+    <p>Golden Glove Winner: <%= player.golden_glove %></p>
+<% end %>

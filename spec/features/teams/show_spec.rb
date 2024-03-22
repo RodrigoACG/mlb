@@ -13,7 +13,6 @@ RSpec.describe "Team Show Page" do
       # When I visit '/parents/:id'
 
       # Then I see the parent with that id including the parent's attributes
-      save_and_open_page
       expect(page).to have_content("Team Name: Rockies")
 
       expect(page).to have_content("Have Won A World Series: false")
