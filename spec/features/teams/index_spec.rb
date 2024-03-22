@@ -31,7 +31,6 @@ RSpec.describe "Teams Index" do
       # When I visit the parent index,
       # I see that records are ordered by most recently created first
       # And next to each of the records I see when it was created
-      save_and_open_page
       expect("Braves").to appear_before("Rockies")
       expect("Rockies").to appear_before("Dodgers")
 
