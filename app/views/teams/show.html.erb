@@ -2,4 +2,9 @@
  <p>Team Name: <%= @team.name %></p>
  <p>Have Won A World Series: <%= @team.world_series %></p>
  <p>Year founded: <%= @team.year_founded %></p>
- <p>Player Count: <%= @team.players.count %>
+ <p>Player Count: <%= @team.count_of_players  %></p>
+ <%# can i call .count like this ?%>
+
+   
+    <%= link_to "Players On #{@team.name}", "/teams/#{@team.id}/players" , method: :get  %>
+   

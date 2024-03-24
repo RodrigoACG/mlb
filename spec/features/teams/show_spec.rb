@@ -9,6 +9,7 @@ RSpec.describe "Team Show Page" do
     @player1 = @team1.players.create!(name: "Brenton Doyle", jersey_number: 25, golden_glove: true)
     @player2 = @team1.players.create!(name: "Carlos Gonzalez", jersey_number: 5, golden_glove: true)
     @player3 = @team1.players.create!(name: "Charlie Blackmon", jersey_number: 19, golden_glove: false)
+    @player4 = @team2.players.create!(name: "Freddie Freeman", jersey_number: 5, golden_glove: true)
   end
 
   describe '#us 2' do
@@ -34,6 +35,21 @@ RSpec.describe "Team Show Page" do
       #   I see a count of the number of children associated with this parent
     
       expect(page).to have_content("Player Count: 3")
+    end
+  end
+
+  describe '#us 10' do
+    it 'takes me to the teams players page' do
+      visit "/teams/#{@team1.id}"
+      expect(page).to have_link("Players On Rockies")
+      click_link("Players On Rockies")
+      expect(current_path).to eq("/teams/#{@team1.id}/players")
+      # save_and_open_page
+      expect(page).to have_content("Brenton Doyle")
+      expect(page).to have_content("Carlos Gonzalez")
+      expect(page).to have_content("Charlie Blackmon")
+      expect(page).to_not have_content("Freddie Freeman")
+
     end
   end
 end
