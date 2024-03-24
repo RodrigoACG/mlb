@@ -37,4 +37,14 @@ RSpec.describe "Teams Index" do
     end
   end
 
+  describe '#us 9 ' do
+    it 'displays teams on top of each page' do
+
+      visit "/teams"
+      expect(page).to have_link("Teams")
+      click_on("Teams")
+      expect(current_path).to eq("/teams")
+    end
+  end
+
 end
