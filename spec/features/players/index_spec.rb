@@ -3,13 +3,13 @@ require "rails_helper"
 RSpec.describe 'Player Index' do
   before(:each) do
 
-    team1 = Team.create(name: "Rockies", world_series: false, year_founded:1991)
-    team2 = Team.create(name: "Dodgers", world_series: true, year_founded:1883)
-    team3 = Team.create(name: "Braves", world_series: false, year_founded:1871)
+    @team1 = Team.create(name: "Rockies", world_series: false, year_founded:1991)
+    @team2 = Team.create(name: "Dodgers", world_series: true, year_founded:1883)
+    @team3 = Team.create(name: "Braves", world_series: false, year_founded:1871)
 
-    player1 = team1.players.create!(name: "Brenton Doyle", jersey_number: 25, golden_glove: true)
-    player2 = team2.players.create!(name: "Ronald Acuña Jr.", jersey_number:13, golden_glove: false)
-    player3 = team3.players.create!(name: "Freddie Freeman", jersey_number: 5, golden_glove: true)
+    @player1 = @team1.players.create!(name: "Brenton Doyle", jersey_number: 25, golden_glove: true)
+    @player2 = @team2.players.create!(name: "Ronald Acuña Jr.", jersey_number:13, golden_glove: false)
+    @player3 = @team3.players.create!(name: "Freddie Freeman", jersey_number: 5, golden_glove: true)
     
   end
 
@@ -29,6 +29,16 @@ RSpec.describe 'Player Index' do
       expect(page).to have_content("Name: Freddie Freeman")
       expect(page).to have_content("Jersey Number: 5")
       expect(page).to have_content("Golden Glove Winner: true")
+    end
+
+    describe '#us 8' do
+      it 'has a link of players on top of each page' do
+        visit "/players/#{@player1.id}"
+        expect(page).to have_link("Players")
+        click_on("Players")
+
+        expect(current_path).to eq("/players")
+      end
     end
   end
 end
