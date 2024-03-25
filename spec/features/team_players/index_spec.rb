@@ -20,7 +20,7 @@ RSpec.describe "Team Player Index" do
       visit "/teams/#{@team1.id}/players"
       # Then I see each Child that is associated with that Parent with each Child's attributes
       # (data from each column that is on the child table)
-      save_and_open_page
+      # save_and_open_page
 
       expect(page).to have_content("Player Name: Brenton Doyle")
       expect(page).to have_content("Jersey Number: 25")

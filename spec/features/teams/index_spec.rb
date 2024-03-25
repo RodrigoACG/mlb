@@ -47,4 +47,31 @@ RSpec.describe "Teams Index" do
     end
   end
 
+  describe '#us 11' do
+    it 'creates a new parent ' do
+      #  As a visitor
+      # When I visit the Parent Index page
+      visit "/teams"
+      # Then I see a link to create a new Parent record, "New Parent"
+      expect(page).to have_link("Create Team")
+      # When I click this link
+      click_on("Create Team")
+      expect(current_path).to eq("/teams/new")
+      # Then I am taken to '/parents/new' where I  see a form for a new parent record
+      fill_in :name, with: "Padres"
+      fill_in :year_founded, with: 1969
+      fill_in :world_series, with: false
+      # When I fill out the form with a new parent's attributes:
+      click_on "Create Team"
+      # And I click the button "Create Parent" to submit the form
+      
+      # Then a `POST` request is sent to the '/parents' route,
+      # a new parent record is created,
+      expect(current_path).to eq("/teams")
+      expect(page).to have_content("Padres")
+      # and I am redirected to the Parent Index page where I see the new Parent displayed.
+    end
+  end
+  
+
 end

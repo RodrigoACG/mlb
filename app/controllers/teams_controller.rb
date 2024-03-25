@@ -9,4 +9,11 @@ class TeamsController < ApplicationController
   def show 
     @team = Team.find(params[:id])
   end
+
+  def new; end
+
+  def create
+    Team.create!(name: params[:name], world_series: params[:world_series], year_founded: params[:year_founded])
+    redirect_to "/teams"
+  end
 end
