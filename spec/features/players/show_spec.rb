@@ -58,5 +58,19 @@ RSpec.describe "Player Show" do
     
       
     end
+  
+  end
+
+
+  describe '#us 20 ' do
+    it 'Deletes a child ' do
+      visit "/players/#{@player1.id}"
+
+      expect(page).to have_link("Delete Player")
+      click_link("Delete Player")
+      save_and_open_page
+      expect(current_path).to eq("/players")
+      expect(page).to_not have_content("Brenton Doyle")
+    end
   end
 end

@@ -94,7 +94,7 @@ RSpec.describe "Team Show Page" do
       expect(page).to have_link("Delete Team")
       # When I click the link "Delete Parent"
       expect(page).to have_content("Delete Team")
-      save_and_open_page
+      # save_and_open_page
       click_on("Delete Team")
       # Then a 'DELETE' request is sent to '/parents/:id',
       expect(page).to_not have_content("Rockies")

@@ -13,10 +13,17 @@ class PlayersController < ApplicationController
   
   def update
     player = Player.find(params[:id])
-
+    
     player.update(players_params)
     # player.save
     redirect_to "/players/#{player.id}"
+  end
+  
+  def destroy
+    # @player = Player.find(params[:id])
+    # require 'pry'; binding.pry
+    Player.destroy(params[:id])
+    redirect_to players_path
   end
 
   private 

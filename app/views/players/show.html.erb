@@ -3,3 +3,4 @@
 <p>Golden Glove Winner: <%= @player.golden_glove %></p>
 
 <%= link_to 'Update Player', "/players/#{@player.id}/edit", method: :get %>
+<%= link_to 'Delete Player', "/players/#{@player.id}", method: :delete %>
