@@ -6,3 +6,5 @@
     <p> Has won a Golden Glove: <%= player.golden_glove %></p>
 
  <% end %>
+
+  <%= link_to 'Create Team Player', "/teams/#{@team.id}/players/new" , methos: :get %>

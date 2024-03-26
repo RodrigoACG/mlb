@@ -34,4 +34,33 @@ RSpec.describe "Team Player Index" do
       
     end
   end
+
+
+  describe '#us 13 ' do
+    it 'creates a child in the parent' do
+
+      # As a visitor
+      # When I visit a Parent Children Index page
+      visit "/teams/#{@team1.id}/players"
+      # Then I see a link to add a new adoptable child for that parent "Create Child"
+      expect(page).to have_link("Create Team Player")
+      # When I click the link
+      click_on("Create Team Player")
+      # I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
+      expect(current_path).to eq("/teams/#{@team1.id}/players/new")
+      # When I fill in the form with the child's attributes:
+      fill_in :name, with: "Tulo"
+      fill_in :jersey_number, with: 2
+      choose("golden_glove_true")
+
+      # And I click the button "Create Child"
+      click_on("Add Player")
+      expect(current_path).to eq("/teams/#{@team1.id}/players")
+      # Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
+
+      # a new child object/row is created for that parent,
+      expect(page).to have_content("Tulo")
+      # and I am redirected to the Parent Childs Index page where I can see the new child listed
+    end
+  end
 end
