@@ -7,6 +7,8 @@ RSpec.describe "Team Player Index" do
     @player1 = @team1.players.create!(name: "Brenton Doyle", jersey_number: 25, golden_glove: true)
     @player2 = @team1.players.create!(name: "Carlos Gonzalez", jersey_number: 5, golden_glove: true)
     @player3 = @team1.players.create!(name: "Charlie Blackmon", jersey_number: 19, golden_glove: false)
+    @player4 = @team1.players.create!(name: "A", jersey_number: 1, golden_glove: false)
+    
 
 
     
@@ -14,7 +16,7 @@ RSpec.describe "Team Player Index" do
 
   describe '#us 5' do
     it 'sees each player on a team' do
-
+      require 'pry'; binding.pry
       # As a visitor
       # When I visit '/parents/:parent_id/child_table_name'
       visit "/teams/#{@team1.id}/players"
@@ -61,6 +63,25 @@ RSpec.describe "Team Player Index" do
       # a new child object/row is created for that parent,
       expect(page).to have_content("Tulo")
       # and I am redirected to the Parent Childs Index page where I can see the new child listed
+    end
+  end
+
+  describe '#us 16' do
+    it 'sort players alphabetically' do
+      # As a visitor
+      # When I visit the Parent's children Index Page
+      visit "/teams/#{@team1.id}/players"
+      # Then I see a link to sort children in alphabetical order
+      expect(page).to have_link("Sort Players Alphabetically")
+      # When I click on the link
+      click_on("Sort Players Alphabetically")
+      save_and_open_page
+      expect(current_path).to eq("/teams/#{@team1.id}/players")
+      expect("A").to appear_before("Brenton Doyle")
+      expect("Brenton Doyle").to appear_before("Carlos Gonzalez")
+      expect('Carlos Gonzalez').to appear_before("Charlie Blackmon")
+      # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+      expect(current_path).to eq("/teams/#{@team1.id}/players")
     end
   end
 end

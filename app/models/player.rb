@@ -4,4 +4,8 @@ class Player < ApplicationRecord
   def self.winners
     where("golden_glove = true")
   end
+
+  def self.sort_name
+    order(name: :asc)
+  end
 end 
