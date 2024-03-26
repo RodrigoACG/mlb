@@ -15,7 +15,7 @@ RSpec.describe "Player Show" do
     it 'exists' do
       # As a visitor
       # When I visit '/child_table_name/:id'
-      visit "players/#{@player1.id}"
+      visit "/players/#{@player1.id}"
       # Then I see the child with that id including the child's attributes
       # (data from each column that is on the child table)
 
@@ -25,6 +25,38 @@ RSpec.describe "Player Show" do
       expect(page).to have_content("Golden Glove Winner: true")
 
     end
+  end
 
+  describe '#us 14' do
+    it 'update child attributes ' do
+
+      # As a visitor
+      # When I visit a Child Show page
+      visit "/players/#{@player1.id}"
+      # Then I see a link to update that Child "Update Child"
+      expect(page).to have_link("Update Player")
+      expect(page).to have_content("Player Name: Brenton Doyle") 
+      expect(page).to have_content("Jersey Number: 25") 
+      expect(page).to have_content("Golden Glove Winner: true")
+      # When I click the link
+      click_on("Update Player")
+      # I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
+      expect(current_path).to eq("/players/#{@player1.id}/edit")
+      fill_in :name, with: "Todd Helton"
+      fill_in :jersey_number, with: 17
+      choose('golden_glove_false')
+      # When I click the button to submit the form "Update Child"
+      click_on("Update Player")
+      # Then a `PATCH` request is sent to '/child_table_name/:id',
+      expect(current_path).to eq("/players/#{@player1.id}")
+      # the child's data is updated,
+      expect(page).to have_content("Player Name: Todd Helton") 
+      expect(page).to have_content("Jersey Number: 17") 
+      expect(page).to have_content("Golden Glove Winner: false")
+
+      # and I am redirected to the Child Show page where I see the Child's updated information
+    
+      
+    end
   end
 end

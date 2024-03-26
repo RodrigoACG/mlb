@@ -1,0 +1,13 @@
+<%= form_with(url: "/players/#{@player.id}", method: :patch) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :jersey_number %>
+  <%= form.text_field :jersey_number %>
+
+    <%= form.label :golden_glove %>
+  <%= form.radio_button :golden_glove, 'true' %> true
+  <%= form.radio_button :golden_glove, 'false' %> false <br>
+
+  <%= form.submit 'Update Player' %>
+<% end %>
