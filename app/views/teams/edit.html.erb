@@ -1,0 +1,17 @@
+<p>Team Name: <%= @team.name %></p>
+<p>Have Won A World Series: <%= @team.world_series %></p>
+<p>Year founded: <%= @team.year_founded %></p>
+
+<%= form_with url: "/teams/#{@team.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %> <br>
+
+  <%= form.label :world_series %>
+  <%= form.radio_button :world_series, 'true' %> true
+  <%= form.radio_button :world_series, 'false' %> false <br>
+  
+  <%= form.label :year_founded %>
+  <%= form.text_field :year_founded %> <br>
+  <%= form.submit 'Update Team' %>
+  
+<% end %>

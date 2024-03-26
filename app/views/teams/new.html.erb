@@ -1,12 +1,13 @@
 <%= form_with(url: '/teams', method: :post) do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name %> <br>
 
   <%= form.label :year_founded %>
-  <%= form.text_field :year_founded %>
+  <%= form.text_field :year_founded %> <br>
 
   <%= form.label :world_series %>
-  <%= form.text_field :world_series %>
+  <%= form.radio_button :world_series, 'true' %> true
+  <%= form.radio_button :world_series, 'false' %> false <br>
 
   <%= form.submit 'Create Team' %>
 <% end %>

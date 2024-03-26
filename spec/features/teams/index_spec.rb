@@ -60,7 +60,7 @@ RSpec.describe "Teams Index" do
       # Then I am taken to '/parents/new' where I  see a form for a new parent record
       fill_in :name, with: "Padres"
       fill_in :year_founded, with: 1969
-      fill_in :world_series, with: false
+      choose('world_series_false')
       # When I fill out the form with a new parent's attributes:
       click_on "Create Team"
       # And I click the button "Create Parent" to submit the form
