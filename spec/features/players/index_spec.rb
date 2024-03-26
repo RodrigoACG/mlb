@@ -23,22 +23,32 @@ RSpec.describe 'Player Index' do
       expect(page).to have_content("Name: Brenton Doyle") 
       expect(page).to have_content("Jersey Number: 25") 
       expect(page).to have_content("Golden Glove Winner: true")  
-      expect(page).to have_content("Name: Ronald Acuña Jr.")
-      expect(page).to have_content("Jersey Number: 13")
-      expect(page).to have_content("Golden Glove Winner: false")
+      # expect(page).to have_content("Name: Ronald Acuña Jr.")
+      # expect(page).to have_content("Jersey Number: 13")
+      # expect(page).to have_content("Golden Glove Winner: false")
+      # US 15 changed this data 
       expect(page).to have_content("Name: Freddie Freeman")
       expect(page).to have_content("Jersey Number: 5")
       expect(page).to have_content("Golden Glove Winner: true")
     end
+  end
+  describe '#us 8' do
+    it 'has a link of players on top of each page' do
+      visit "/players/#{@player1.id}"
+      expect(page).to have_link("Players")
+      click_on("Players")
 
-    describe '#us 8' do
-      it 'has a link of players on top of each page' do
-        visit "/players/#{@player1.id}"
-        expect(page).to have_link("Players")
-        click_on("Players")
+      expect(current_path).to eq("/players")
+    end
+  end
 
-        expect(current_path).to eq("/players")
-      end
+  describe '#us 15 ' do
+    it 'only shows the players with a golden glove' do
+      visit "/players"
+      save_and_open_page
+      expect(page).to have_content("Freddie Freeman")
+      expect(page).to have_content("Brenton Doyle")
+      expect(page).to_not have_content("Ronald Acuña Jr.")
     end
   end
 end
