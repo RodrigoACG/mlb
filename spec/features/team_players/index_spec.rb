@@ -16,7 +16,6 @@ RSpec.describe "Team Player Index" do
 
   describe '#us 5' do
     it 'sees each player on a team' do
-      require 'pry'; binding.pry
       # As a visitor
       # When I visit '/parents/:parent_id/child_table_name'
       visit "/teams/#{@team1.id}/players"
@@ -75,7 +74,7 @@ RSpec.describe "Team Player Index" do
       expect(page).to have_link("Sort Players Alphabetically")
       # When I click on the link
       click_on("Sort Players Alphabetically")
-      save_and_open_page
+      # save_and_open_page
       expect(current_path).to eq("/teams/#{@team1.id}/players")
       expect("A").to appear_before("Brenton Doyle")
       expect("Brenton Doyle").to appear_before("Carlos Gonzalez")

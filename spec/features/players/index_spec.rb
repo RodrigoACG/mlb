@@ -45,7 +45,7 @@ RSpec.describe 'Player Index' do
   describe '#us 15 ' do
     it 'only shows the players with a golden glove' do
       visit "/players"
-      save_and_open_page
+      # save_and_open_page
       expect(page).to have_content("Freddie Freeman")
       expect(page).to have_content("Brenton Doyle")
       expect(page).to_not have_content("Ronald Acuña Jr.")

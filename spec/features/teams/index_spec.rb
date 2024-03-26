@@ -72,6 +72,24 @@ RSpec.describe "Teams Index" do
       # and I am redirected to the Parent Index page where I see the new Parent displayed.
     end
   end
-  
 
+  describe " #17" do 
+    it "edits Team info" do 
+      # As a visitor
+      # When I visit the parent index page
+      visit "/teams"
+      # Next to every parent, I see a link to edit that parent's info
+      expect(page).to have_link("Edit #{@team1.name} Info")
+      # When I click the link
+      click_on("Edit #{@team1.name} Info")
+      expect(current_path).to eq("/teams/#{@team1.id}/edit")
+      save_and_open_page
+      # I should be taken to that parent's edit page where I can update its information just like in User Story 12
+      fill_in "Name", with: "Jays"
+      click_on("Update Team")
+      expect(page).to have_content("Jays")
+      expect(current_path).to eq("/teams/#{@team1.id}")
+
+    end
+  end
 end
