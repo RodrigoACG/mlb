@@ -2,5 +2,6 @@
  <% @players.winners.each do |player|  %>
     <p>Name: <%= player.name %></p>
     <p>Jersey Number: <%= player.jersey_number %></p>
-    <p>Golden Glove Winner: <%= player.golden_glove %></p>
+    <p>Golden Glove Winner: <%= player.golden_glove %></p><%= link_to "Edit #{player.id} Info", "/players/#{player.id}/edit"  %>
+    
 <% end %>

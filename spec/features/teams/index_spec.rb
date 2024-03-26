@@ -83,7 +83,7 @@ RSpec.describe "Teams Index" do
       # When I click the link
       click_on("Edit #{@team1.name} Info")
       expect(current_path).to eq("/teams/#{@team1.id}/edit")
-      save_and_open_page
+      # save_and_open_page
       # I should be taken to that parent's edit page where I can update its information just like in User Story 12
       fill_in "Name", with: "Jays"
       click_on("Update Team")

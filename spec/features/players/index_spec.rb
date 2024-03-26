@@ -51,4 +51,22 @@ RSpec.describe 'Player Index' do
       expect(page).to_not have_content("Ronald Acuña Jr.")
     end
   end
+
+  describe '#us 18 ' do
+    it 'update each players info' do
+      # As a visitor
+      # When I visit the `child_table_name` index page or a parent `child_table_name` index page
+      visit "/players"
+      # Next to every child, I see a link to edit that child's info
+      expect(page).to have_link("Edit #{@player1.id} Info")
+      # When I click the link
+      click_on("Edit #{@player1.id} Info")
+      # I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 14
+      expect(current_path).to eq("/players/#{@player1.id}/edit")
+      fill_in "Name", with: "Randy Johnson"
+      click_on("Update Player")
+      expect(page).to have_content("Randy Johnson")
+      expect(current_path).to eq("/players/#{@player1.id}")
+    end
+  end
 end
