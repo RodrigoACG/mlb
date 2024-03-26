@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
-  has_many :players
+  has_many :players, dependent: :destroy
 
   def count_of_players 
     players.count

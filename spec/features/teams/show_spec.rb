@@ -82,9 +82,26 @@ RSpec.describe "Team Show Page" do
       expect(page).to have_content("Angles")
 
       # and I am redirected to the Parent's Show page where I see the parent's updated info
+    end
+  end
 
+  describe '#Us 19' do
+    it 'Deletes a team' do
+      # As a visitor
+      # When I visit a parent show page
+      visit "/teams/#{@team1.id}"
+      # Then I see a link to delete the parent
+      expect(page).to have_link("Delete Team")
+      # When I click the link "Delete Parent"
+      expect(page).to have_content("Delete Team")
+      save_and_open_page
+      click_on("Delete Team")
+      # Then a 'DELETE' request is sent to '/parents/:id',
+      expect(page).to_not have_content("Rockies")
 
-
+      # the parent is deleted, and all child records are deleted
+      expect(current_path).to eq("/teams")
+      # and I am redirected to the parent index page where I no longer see this parent
 
     end
   end

@@ -8,5 +8,5 @@
    
   <%= link_to "Players On #{@team.name}", "/teams/#{@team.id}/players" , method: :get  %><br>
   <%= link_to 'Update Team', "/teams/#{@team.id}/edit" ,method: :get %><br>
-
+  <%= link_to 'Delete Team', "/teams/#{@team.id}", method: :delete %>
    
