@@ -3,6 +3,6 @@
     <p>Name: <%= player.name %></p>
     <p>Jersey Number: <%= player.jersey_number %></p>
     <p>Golden Glove Winner: <%= player.golden_glove %></p><%= link_to "Edit #{player.id} Info", "/players/#{player.id}/edit"  %>
-    
+    <%= link_to "Delete #{player.name}", "/players/#{player.id}" , method: :delete  %>
 <% end %>
 

@@ -69,4 +69,19 @@ RSpec.describe 'Player Index' do
       expect(current_path).to eq("/players/#{@player1.id}")
     end
   end
+
+  describe '#us 23' do
+    it 'Deletes a player' do
+      
+
+      visit "/players"
+      expect(page).to have_link("Delete #{@player1.name}")
+      click_on("Delete #{@player1.name}")
+      expect(current_path).to eq("/players")
+      save_and_open_page
+      expect(page).to have_content("Freddie Freeman")
+      # expect(page).to have_content("Ronald Acuña Jr.")
+      expect(page).to_not have_content("Brenton Doyle")
+    end
+  end
 end
