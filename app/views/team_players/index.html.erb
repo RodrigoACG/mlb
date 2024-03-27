@@ -4,8 +4,16 @@
     <p> Player Name: <%= player.name %></p>
     <p> Jersey Number: <%= player.jersey_number %></p>
     <p> Has won a Golden Glove: <%= player.golden_glove %></p>
-
  <% end %>
+
+ <section class="threshold form">
+  <%= form_with(url: "/teams/#{@team.id}/players", method: :get) do |form| %>
+    <%= form.label :input_value, "Players with jerseys higher then ..." %>
+    <%= form.text_field :input_value %>
+  
+    <%= form.submit 'Threshold' %>
+  <% end %>
+</section>
 
   <%= link_to 'Create Team Player', "/teams/#{@team.id}/players/new" , method: :get %><br>
   <%= link_to 'Sort Players Alphabetically', "/teams/#{@team.id}/players?sort=true"%><br>

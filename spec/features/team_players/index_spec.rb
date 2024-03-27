@@ -4,6 +4,7 @@ RSpec.describe "Team Player Index" do
   before(:each) do
     @team1 = Team.create(name: "Rockies", world_series: false, year_founded:1991)
 
+
     @player1 = @team1.players.create!(name: "Brenton Doyle", jersey_number: 25, golden_glove: true)
     @player2 = @team1.players.create!(name: "Carlos Gonzalez", jersey_number: 5, golden_glove: true)
     @player3 = @team1.players.create!(name: "Charlie Blackmon", jersey_number: 19, golden_glove: false)
@@ -81,6 +82,27 @@ RSpec.describe "Team Player Index" do
       expect('Carlos Gonzalez').to appear_before("Charlie Blackmon")
       # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
       expect(current_path).to eq("/teams/#{@team1.id}/players")
+    end
+  end
+
+  describe '#us 21' do
+    it 'has a form that allows me to put a number' do
+      # As a visitor
+      # When I visit the Parent's children Index Page
+      visit "/teams/#{@team1.id}/players"
+      # I see a form that allows me to input a number value
+      within '.threshold form' do
+        expect(page).to have_field("Players with jerseys higher then ...")
+        # When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+        fill_in :input_value, with: 10 
+        click_on("Threshold")
+      end
+      # Then I am brought back to the current index page with only the records that meet that threshold shown.
+      expect(current_path).to eq("/teams/#{@team1.id}/players")
+      expect(page).to have_content(@player1)
+      expect(page).to have_content(@player3)
+      expect(page).to_not have_content(@player2)
+      expect(page).to_not have_content(@player4)
     end
   end
 end

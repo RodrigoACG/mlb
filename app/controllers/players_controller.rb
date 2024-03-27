@@ -20,10 +20,9 @@ class PlayersController < ApplicationController
   end
   
   def destroy
-    # @player = Player.find(params[:id])
-    # require 'pry'; binding.pry
+   
     Player.destroy(params[:id])
-    redirect_to players_path
+    redirect_to "/players"
   end
 
   private 
