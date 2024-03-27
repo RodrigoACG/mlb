@@ -9,8 +9,5 @@ class Team < ApplicationRecord
     order(created_at: :desc)
   end
 
-  def players_by_threshold(value)
-    players.where("jersey_number >= #{value}")
-  end
   
 end

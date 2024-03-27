@@ -8,7 +8,7 @@ RSpec.describe "Team Player Index" do
     @player1 = @team1.players.create!(name: "Brenton Doyle", jersey_number: 25, golden_glove: true)
     @player2 = @team1.players.create!(name: "Carlos Gonzalez", jersey_number: 5, golden_glove: true)
     @player3 = @team1.players.create!(name: "Charlie Blackmon", jersey_number: 19, golden_glove: false)
-    @player4 = @team1.players.create!(name: "A", jersey_number: 1, golden_glove: false)
+    @player4 = @team1.players.create!(name: "Bahjhuhj", jersey_number: 1, golden_glove: false)
     
 
 
@@ -75,9 +75,9 @@ RSpec.describe "Team Player Index" do
       expect(page).to have_link("Sort Players Alphabetically")
       # When I click on the link
       click_on("Sort Players Alphabetically")
-      # save_and_open_page
+      save_and_open_page
       expect(current_path).to eq("/teams/#{@team1.id}/players")
-      expect("A").to appear_before("Brenton Doyle")
+      expect("Bahjhuhj").to appear_before("Brenton Doyle")
       expect("Brenton Doyle").to appear_before("Carlos Gonzalez")
       expect('Carlos Gonzalez').to appear_before("Charlie Blackmon")
       # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
@@ -97,12 +97,13 @@ RSpec.describe "Team Player Index" do
         fill_in :input_value, with: 10 
         click_on("Threshold")
       end
+      # save_and_open_page
       # Then I am brought back to the current index page with only the records that meet that threshold shown.
       expect(current_path).to eq("/teams/#{@team1.id}/players")
-      expect(page).to have_content(@player1)
-      expect(page).to have_content(@player3)
-      expect(page).to_not have_content(@player2)
-      expect(page).to_not have_content(@player4)
+      expect(page).to have_content("Brenton Doyle")
+      expect(page).to have_content("Charlie Blackmon")
+      expect(page).to_not have_content(@player2.name)
+      expect(page).to_not have_content(@player4.name)
     end
   end
 end

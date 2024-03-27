@@ -68,7 +68,7 @@ RSpec.describe "Player Show" do
 
       expect(page).to have_link("Delete Player")
       click_link("Delete Player")
-      save_and_open_page
+      # save_and_open_page
       expect(current_path).to eq("/players")
       expect(page).to_not have_content("Brenton Doyle")
     end

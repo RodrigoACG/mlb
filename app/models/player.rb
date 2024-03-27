@@ -8,4 +8,9 @@ class Player < ApplicationRecord
   def self.sort_name
     order(name: :asc)
   end
+
+  def self.players_by_threshold(value)
+    
+    Player.where("jersey_number >= ?",value)
+  end
 end 

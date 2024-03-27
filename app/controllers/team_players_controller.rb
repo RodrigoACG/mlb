@@ -2,13 +2,14 @@ class TeamPlayersController < ApplicationController
    
   def index 
     @team = Team.find(params[:id])
+    @players = @team.players
     
     if params[:sort] == "true"
       @players = @team.players.sort_name
-    elsif params[:input_value] 
-      @players = @team.players_by_threshold(params[:input_value])
-    else 
-      @players = @team.players
+    end 
+    
+    if params[:input_value] 
+      @players = @players.players_by_threshold(params[:input_value])
     end
   end
   
