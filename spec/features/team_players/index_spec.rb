@@ -75,7 +75,7 @@ RSpec.describe "Team Player Index" do
       expect(page).to have_link("Sort Players Alphabetically")
       # When I click on the link
       click_on("Sort Players Alphabetically")
-      save_and_open_page
+      # save_and_open_page
       expect(current_path).to eq("/teams/#{@team1.id}/players")
       expect("Bahjhuhj").to appear_before("Brenton Doyle")
       expect("Brenton Doyle").to appear_before("Carlos Gonzalez")

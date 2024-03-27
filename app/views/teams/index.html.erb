@@ -1,5 +1,6 @@
  <h1>Teams</h1>
  <%@teams.each do |team|  %>
     <p><%= team.name %> : <%=team.created_at %></p><%= link_to "Edit #{team.name} Info", "/teams/#{team.id}/edit"  %>
-  <% end %>
+    <%= link_to "Delete #{team.name}", "/teams/#{team.id}" , method: :delete %>
+<% end %>
   <%= link_to 'Create Team', "/teams/new" , method: :get %><br>

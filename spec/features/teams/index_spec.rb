@@ -92,4 +92,17 @@ RSpec.describe "Teams Index" do
 
     end
   end
+
+  describe '#us 22' do
+    it 'deletes a parent from index' do
+
+      visit "/teams"
+      expect(page).to have_link("Delete")
+      click_on("Delete #{@team1.name}")
+      expect(current_path).to eq("/teams")
+
+      expect(page).to have_content("Dodgers")
+      expect(page).to_not have_content("Rockies")
+    end
+  end
 end
